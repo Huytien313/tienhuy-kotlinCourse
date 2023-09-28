@@ -1,4 +1,39 @@
 <resources>
-    <string name="app_name">PetShelter</string>
-    <string name="lets_go">Let\'s Go</string>
+    <string name="app_name">MyPet</string>
+    <string name="let_s_go">let\'s go</string>
+
+    <string name="gary">Gary</string>
+    <string name="peach">Peach</string>
+    <string name="whitney">Whitney </string>
+    <string name="bugy">Bugy</string>
+    <string name="willie">Willie</string>
+    <string name="kiwi">Kiwi</string>
+    <string name="stitch">Stitch</string>
+    <string name="cake">Cake</string>
+    <string name="moon">Moon</string>
+    <string name="spike">Spike</string>
+
+    <string name="garyyearold">2.5 years</string>
+    <string name="peachyearold">1.5 years </string>
+    <string name="whitneyyearold">3.5 years</string>
+    <string name="bugyyearold">2 years</string>
+    <string name="willieyearold">3 years</string>
+    <string name="kiwiyearold">1.7 years</string>
+    <string name="stitchyearold">2.3 years</string>
+    <string name="cakeyearold">1.5 years </string>
+    <string name="moonyearold">1.8 years</string>
+    <string name="spikeyearold">0.5 years</string>
+
+    <string name="garybreed">orshire Terrier</string>
+    <string name="peachbreed">half bread </string>
+    <string name="whitneybreed">British Longhair </string>
+    <string name="bugybreed">Jack Russell Terrier</string>
+    <string name="willieybreed">Samoyed</string>
+    <string name="kiwibreed">Yorshire Terrier</string>
+    <string name="stitchbreed">Europan Cat</string>
+    <string name="cakebreed">Welsh Corgi </string>
+    <string name="moonbreed">Siberian Cat</string>
+    <string name="spikebreed">Maine Coon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

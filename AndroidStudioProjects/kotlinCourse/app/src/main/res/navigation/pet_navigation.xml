@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/pet_navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pet_navigation"
+    app:startDestination="@id/fragmentStart">
 
+    <fragment
+        android:id="@+id/fragmentStart"
+        android:name="com.kotlin.example.mypet.ui.FragmentStart"
+        android:label="FragmentStart"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_fragmentStart_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.kotlin.example.mypet.ui.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentMessage"
+            app:destination="@id/fragmentMessage" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentContact"
+            app:destination="@id/fragmentContact" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentFavorite"
+            app:destination="@id/fragmentFavorite" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMessage"
+        android:name="com.kotlin.example.mypet.ui.FragmentMessage"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/fragmentContact"
+        android:name="com.kotlin.example.mypet.ui.FragmentContact"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/fragmentFavorite"
+        android:name="com.kotlin.example.mypet.ui.FragmentFavorite"
+        android:label="fragment_favorit"
+        tools:layout="@layout/fragment_favorit" />
 </navigation>
