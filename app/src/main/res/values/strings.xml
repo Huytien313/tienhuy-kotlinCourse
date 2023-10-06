@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">MyPet</string>
+    <string name="let_s_go">let\'s go</string>
+
+    <string name="gary">Gary</string>
+    <string name="peach">Peach</string>
+    <string name="whitney">Whitney </string>
+    <string name="bugy">Bugy</string>
+    <string name="willie">Willie</string>
+    <string name="kiwi">Kiwi</string>
+    <string name="stitch">Stitch</string>
+    <string name="cake">Cake</string>
+    <string name="moon">Moon</string>
+    <string name="spike">Spike</string>
+
+    <string name="garyyearold">2.5 years</string>
+    <string name="peachyearold">1.5 years </string>
+    <string name="whitneyyearold">3.5 years</string>
+    <string name="bugyyearold">2 years</string>
+    <string name="willieyearold">3 years</string>
+    <string name="kiwiyearold">1.7 years</string>
+    <string name="stitchyearold">2.3 years</string>
+    <string name="cakeyearold">1.5 years </string>
+    <string name="moonyearold">1.8 years</string>
+    <string name="spikeyearold">0.5 years</string>
+
+    <string name="garybreed">orshire Terrier</string>
+    <string name="peachbreed">half bread </string>
+    <string name="whitneybreed">British Longhair </string>
+    <string name="bugybreed">Jack Russell Terrier</string>
+    <string name="willieybreed">Samoyed</string>
+    <string name="kiwibreed">Yorshire Terrier</string>
+    <string name="stitchbreed">Europan Cat</string>
+    <string name="cakebreed">Welsh Corgi </string>
+    <string name="moonbreed">Siberian Cat</string>
+    <string name="spikebreed">Maine Coon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_pet">All pet</string>
+    <string name="cat">Cat</string>
+    <string name="dog">Dog</string>
+
+    <string name="garyweight">1.2 kg</string>
+    <string name="peachweight">1.5 kg </string>
+    <string name="whitneyweight">0.7 kg</string>
+    <string name="bugyweight">1.6 kg </string>
+    <string name="willieweight">9 kg</string>
+    <string name="kiwiweight">0.7 kg</string>
+    <string name="stitchweight">0.4 kg</string>
+    <string name="cakeweight"> 3 kg </string>
+    <string name="moonweight">2.5 kg</string>
+    <string name="spikeweight">2 kg</string>
+
+    <string name="garytypical">Knows the commands </string>
+    <string name="peachtypical">Knows the commands </string>
+    <string name="whitneytypical">Knows the commands  </string>
+    <string name="bugytypical">Knows the commands </string>
+    <string name="willietypical">Knows the commands </string>
+    <string name="kiwitypical">Knows the commands </string>
+    <string name="stitchtypical">Knows the commands </string>
+    <string name="caketypical">Knows the commands </string>
+    <string name="moontypical">Knows the commands </string>
+    <string name="spiketypical">Knows the commands </string>
+
+    <string name="garyDate">Update time: Dec 22</string>
+    <string name="peachDate">Update time: Dec 22</string>
+    <string name="whitneyDate">Update time: Dec 22 </string>
+    <string name="bugyDate">Update time: Dec 22</string>
+    <string name="willieDate">Update time: Dec 22</string>
+    <string name="kiwiDate">Update time: Dec 22</string>
+    <string name="stitchDate">Update time: Dec 22</string>
+    <string name="cakeDate">Update time: Dec 22</string>
+    <string name="moonDate">Update time: Dec 22</string>
+    <string name="spikeDate">Update time: Dec 22</string>
+
+    <string name="descriptionDetail">The kindnest pet we have ever met.
+        likes to play with ball, is friends with other animal.
+        He got the white color, love rain and pubbles.</string>
+
+
+</resources>

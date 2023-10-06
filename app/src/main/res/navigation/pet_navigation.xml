@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pet_navigation"
+    app:startDestination="@id/fragmentStart">
+
+    <fragment
+        android:id="@+id/fragmentStart"
+        android:name="com.kotlin.example.mypet.ui.FragmentStart"
+        android:label="FragmentStart"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_fragmentStart_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.kotlin.example.mypet.ui.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/home_fragment"/>
+    <fragment
+        android:id="@+id/fragmentMessage"
+        android:name="com.kotlin.example.mypet.ui.FragmentMessage"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" >
+        <action
+            android:id="@+id/action_fragmentMessage_to_fragmentDetailPet"
+            app:destination="@id/fragmentDetailPet" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentContact"
+        android:name="com.kotlin.example.mypet.ui.FragmentContact"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" >
+        <action
+            android:id="@+id/action_fragmentContact_to_fragmentDetailPet"
+            app:destination="@id/fragmentDetailPet" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentFavorite"
+        android:name="com.kotlin.example.mypet.ui.FragmentFavorite"
+        android:label="fragment_favorit"
+        tools:layout="@layout/fragment_favorit" >
+        <action
+            android:id="@+id/action_fragmentFavorite_to_fragmentDetailPet"
+            app:destination="@id/fragmentDetailPet" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentDetailPet"
+        android:name="com.kotlin.example.mypet.ui.FragmentDetailPet"
+        android:label="fragment_detail_pet"
+        tools:layout="@layout/fragment_detail_pet" />
+
+    <fragment
+        android:id="@+id/tabAll"
+        android:name="com.kotlin.example.mypet.ui.TabAll"
+        android:label="fragment_tab_all"
+        tools:layout="@layout/fragment_tab_all" >
+        <action
+            android:id="@+id/action_tabAll_to_fragmentDetailPet"
+            app:destination="@id/fragmentDetailPet" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tabDog"
+        android:name="com.kotlin.example.mypet.ui.TabDog"
+        android:label="fragment_tab_dog"
+        tools:layout="@layout/fragment_tab_dog" >
+        <action
+            android:id="@+id/action_tabDog_to_fragmentDetailPet"
+            app:destination="@id/fragmentDetailPet" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tabCat"
+        android:name="com.kotlin.example.mypet.ui.TabCat"
+        android:label="fragment_tap_cat"
+        tools:layout="@layout/fragment_tap_cat" >
+        <action
+            android:id="@+id/action_tabCat_to_fragmentDetailPet"
+            app:destination="@id/fragmentDetailPet" />
+    </fragment>
+</navigation>
