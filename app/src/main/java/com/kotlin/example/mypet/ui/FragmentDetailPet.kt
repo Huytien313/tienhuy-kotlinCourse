@@ -1,19 +1,27 @@
 package com.kotlin.example.mypet.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import coil.load
 import com.kotlin.example.mypet.PetViewModel
 import com.kotlin.example.mypet.R
+import com.kotlin.example.mypet.data.PetDatabase
 import com.kotlin.example.mypet.databinding.FragmentDetailPetBinding
 
 class FragmentDetailPet : Fragment() {
+    val TAG = "FramentDetailPet"
 
+//    Dùng sai: lateinit var petViewModel : PetViewModel
     private val petViewModel : PetViewModel by activityViewModels()
+    private var petDatabase : PetDatabase?= null
+    // để sử dụng Fragment..Args cần plugin 'androidx.navigation.safeargs.kotlin'
+    val args : FragmentDetailPetArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +33,8 @@ class FragmentDetailPet : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val binding = FragmentDetailPetBinding.bind(view)
+
         petViewModel.currentPet.observe(this.viewLifecycleOwner){
             binding.petBreedDetail.text = getString(it.breed)
             binding.petOldDetail.text = getString(it.yearOld)
@@ -35,5 +43,14 @@ class FragmentDetailPet : Fragment() {
             binding.petDetail.text = getString(it.description)
             binding.petImageDetail.load(it.petImage)
         }
+
+        val database= petDatabase?.petDao()
+        val pet = args.detailPet
+        binding.fb.setOnClickListener{
+            Log.i(TAG,"fvb on click")
+            petViewModel.savePet(pet!!)
+//            database?.insertPet(pet!!)
+        }
+
     }
 }

@@ -5,51 +5,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.FragmentHome">
+    tools:context=".ui.FragmentHome"
+    android:id="@+id/fragmentHome">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarhome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        app:title="Puppy"
+        app:menu="@menu/toolbar_menu"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:isScrollContainer="false"
+        android:keyboardNavigationCluster="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tabBackground="@drawable/tab_shape">
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.appcompat.widget.Toolbar>
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/groupToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:singleSelection="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarhome">
+
+        <Button
+            android:id="@+id/button_pet"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:text="@string/all_pet" />
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="@color/white"
+            android:checked="true"
+            android:drawableLeft="@drawable/ic_allpet"
+            android:text="pets"
+            style= "@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="@color/black" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/cat" />
+        <Button
+            android:id="@+id/button_cat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/ic_cat"
+            android:text="cat"
+            style= "@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="@color/black" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/dog" />
-    </com.google.android.material.tabs.TabLayout>
+        <Button
+            android:id="@+id/button_dog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/ic_dog"
+            android:text="dog"
+            style= "@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="@color/black" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
-<!--    <androidx.slidingpanelayout.widget.SlidingPaneLayout-->
-<!--        android:id="@+id/sliding_pane_layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tablayout">-->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tablayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/groupToggle">
 
-    </androidx.viewpager2.widget.ViewPager2>
-    <!--    </androidx.slidingpanelayout.widget.SlidingPaneLayout>-->
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

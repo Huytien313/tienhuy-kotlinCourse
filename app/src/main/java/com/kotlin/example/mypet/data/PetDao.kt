@@ -7,9 +7,10 @@ import com.kotlin.example.mypet.model.Pet
 
 @Dao
 interface PetDao {
-    @Insert( onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(pet: Pet): Long
 
-    @Query("SELECT * FROM pets ")   // articles = tableName in data
-    fun getAllArticles(): LiveData<List<Pet>>
+    @Insert( onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPet(pet: Pet)
+
+//    @Query("SELECT * FROM pets ")   // articles = tableName in data
+    fun getPets(): List<Pet>
 }

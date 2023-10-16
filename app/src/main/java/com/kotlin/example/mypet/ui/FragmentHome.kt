@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.transaction
-import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.example.mypet.Adapters.PetAdapters
-import com.kotlin.example.mypet.Adapters.TabPetAdapters
+import com.kotlin.example.mypet.PetViewModel
 import com.kotlin.example.mypet.R
 import com.kotlin.example.mypet.databinding.FragmentHomeBinding
+import com.kotlin.example.mypet.model.Pet
 
 /**
  * A simple [Fragment] subclass.
@@ -20,52 +20,42 @@ import com.kotlin.example.mypet.databinding.FragmentHomeBinding
  * create an instance of this fragment.
  */
 class FragmentHome : Fragment() {
-    private lateinit var petAdapter: PetAdapters
+    private val petViewModel: PetViewModel by activityViewModels()
 
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
-        tabLayout = view.findViewById(R.id.tablayout)
-        viewPager = view.findViewById(R.id.viewPager)
+        val binding = FragmentHomeBinding.bind(view)
 
-        val tabadapter = TabPetAdapters(this, tabLayout.tabCount)
-        viewPager.adapter = tabadapter
+        val adapter = PetAdapters {
+            petViewModel.updateCurrentPet(it)
+            binding.fragmentHome.findNavController()
+                .navigate(R.id.action_fragmentHome_to_fragmentDetailPet)
+        }
 
-        viewPager.unregisterOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                tabLayout.selectTab(tabLayout.getTabAt(position))
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = GridLayoutManager(this.context, 2)
+        adapter.submitList(petViewModel.petData)
+        binding.groupToggle.check(R.id.button_pet)
+
+        binding.groupToggle.addOnButtonCheckedListener { groupToggle, checkedId, isChecked ->
+            if (isChecked) {
+                when (checkedId) {
+                    R.id.button_pet -> adapter.submitList(petViewModel.petData)
+                    R.id.button_cat -> adapter.submitList(petViewModel.petData.filter { pet: Pet -> pet.category == 1 })
+                    R.id.button_dog -> adapter.submitList(petViewModel.petData.filter { pet: Pet -> pet.category == 0 })
+                }
             }
-        })
-
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                viewPager.currentItem = tab!!.position
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-        })
+        }
 
         return view
-        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentHomeBinding.bind(view)
-//        tabPetAdapter.setOnItemClickListener{
-//            childFragmentManager.beginTransaction().replace(R.id.homeFragment, FragmentDetailPet())
-//                .commit()
-//            findNavController().navigate(
-//                R.id.action_tabAll_to_fragmentDetailPet
-//            )
-//        }
     }
 }

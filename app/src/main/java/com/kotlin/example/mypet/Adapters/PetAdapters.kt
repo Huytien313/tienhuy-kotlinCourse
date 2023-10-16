@@ -1,24 +1,28 @@
 package com.kotlin.example.mypet.Adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.example.mypet.databinding.GridItemViewBinding
 import coil.load
 import com.kotlin.example.mypet.model.Pet
+import com.kotlin.example.mypet.ui.FragmentDetailPet
+import com.kotlin.example.mypet.ui.FragmentHome
 
 class PetAdapters(private val onItemClicked: (Pet) -> Unit) :
 ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
 
     private lateinit var context : Context
 
-    class PetViewHolder(private var binding: GridItemViewBinding):
+    class PetViewHolder(private var binding : GridItemViewBinding):
     RecyclerView.ViewHolder(binding.root){
 
-        fun bind(pet: Pet, context: Context){
+        fun bind(pet : Pet, context: Context){
             binding.petName.text = context.getString(pet.name)
             binding.petOld.text = context.getString(pet.yearOld)
             binding.petBreed.text =context.getString(pet.breed)
@@ -45,6 +49,7 @@ ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int): PetViewHolder {
+//        không có dòng này không inflate được sang HomeFragment
         context = parent.context
         return PetViewHolder(
             GridItemViewBinding.inflate(
@@ -55,21 +60,15 @@ ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
 
     override fun onBindViewHolder(
         holder: PetViewHolder, position: Int) {
-        val current = getItem(position)
+        val currentPet = getItem(position)
+
+        // không có dòng này list pet không hiện đúng với từng pet
+        holder.bind(currentPet, context)
+
         holder.itemView.setOnClickListener {
-            onItemClicked(current)
-
-            setOnItemClickListener {
-                onItemClickListener?.let { it(current) }
-            }
+            onItemClicked(currentPet)
         }
-        holder.bind(current, context)
 
-    }
-    private var onItemClickListener: ((Pet) -> Unit)? = null
-
-    fun setOnItemClickListener(listener: (Pet) -> Unit) {
-        onItemClickListener = listener
     }
 }
 

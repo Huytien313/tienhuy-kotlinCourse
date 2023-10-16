@@ -6,13 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kotlin.example.mypet.model.Pet
 import com.kotlin.example.mypet.data.PetData
+import com.kotlin.example.mypet.data.PetDatabase
 import com.kotlin.example.mypet.repository.PetRepository
 import kotlinx.coroutines.launch
 
-class PetViewModel(
-    val petRepository : PetRepository
-    ) : ViewModel() {
-
+class PetViewModel: ViewModel() {
+    val petRepository: PetRepository ?=null
     private var _currentPet : MutableLiveData<Pet> = MutableLiveData<Pet>()
     val currentPet : LiveData<Pet> get() = _currentPet
 
@@ -27,6 +26,8 @@ class PetViewModel(
         _currentPet.value = pet
     }
     fun savePet(pet: Pet) = viewModelScope.launch {
-        petRepository.upsert(pet)
+        petRepository?.upsert(pet)
     }
+    fun getSavedPet() = petRepository?.getSavedPet()
+
 }
