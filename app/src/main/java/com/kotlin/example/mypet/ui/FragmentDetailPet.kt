@@ -44,13 +44,15 @@ class FragmentDetailPet : Fragment() {
             binding.petImageDetail.load(it.petImage)
         }
 
-        val database= petDatabase?.petDao()
+//        val database= petDatabase?.petDao()
         val pet = args.detailPet
+
         binding.fb.setOnClickListener{
             Log.i(TAG,"fvb on click")
-            petViewModel.savePet(pet!!)
-//            database?.insertPet(pet!!)
+            println(pet)
+            petViewModel.savePet(pet)
+//            pet.let { it1 -> petViewModel.savePet(it1) }
+//            database?.insertPet(pet)
         }
-
     }
 }

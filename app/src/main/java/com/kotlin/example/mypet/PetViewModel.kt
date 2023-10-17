@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kotlin.example.mypet.model.Pet
 import com.kotlin.example.mypet.data.PetData
-import com.kotlin.example.mypet.data.PetDatabase
 import com.kotlin.example.mypet.repository.PetRepository
 import kotlinx.coroutines.launch
 
@@ -29,5 +28,10 @@ class PetViewModel: ViewModel() {
         petRepository?.upsert(pet)
     }
     fun getSavedPet() = petRepository?.getSavedPet()
+
+    fun deletePet(pet: Pet) = viewModelScope.launch {
+        petRepository?.deletePet(pet)
+    }
+
 
 }

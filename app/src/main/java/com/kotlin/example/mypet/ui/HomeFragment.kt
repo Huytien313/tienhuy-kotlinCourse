@@ -1,6 +1,5 @@
 package com.kotlin.example.mypet.ui
 
-import FragmentFavorite
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

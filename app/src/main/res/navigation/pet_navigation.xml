@@ -33,13 +33,14 @@
         tools:layout="@layout/fragment_detail_pet">
         <argument
             android:name="detailPet"
-            app:nullable="true"
-            android:defaultValue="@null"
             app:argType="com.kotlin.example.mypet.model.Pet"/>
+<!--            app:nullable="true"-->
+<!--            android:defaultValue="@null"-->
+
     </fragment>
     <fragment
         android:id="@+id/fragmentFavorite"
-        android:name="FragmentFavorite"
+        android:name=".ui.FragmentFavorite"
         android:label="FragmentFavorite" >
         <action
             android:id="@+id/action_fragmentFavorite_to_fragmentDetailPet"

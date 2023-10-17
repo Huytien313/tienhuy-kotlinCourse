@@ -12,7 +12,7 @@ import com.kotlin.example.mypet.ui.FragmentHome
 @Database(entities = [Pet::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class PetDatabase: RoomDatabase() {
-    abstract fun petDao(): PetDao
+    abstract fun getPetDao(): PetDao
 
     companion object {
         @Volatile
