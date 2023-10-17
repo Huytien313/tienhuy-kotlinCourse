@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.example.mypet.Adapters.PetAdapters
+import com.kotlin.example.mypet.MainActivity
 import com.kotlin.example.mypet.PetViewModel
 import com.kotlin.example.mypet.R
 import com.kotlin.example.mypet.databinding.FragmentHomeBinding
@@ -21,17 +22,16 @@ import com.kotlin.example.mypet.model.Pet
  */
 class FragmentHome : Fragment() {
     private val petViewModel: PetViewModel by activityViewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         val binding = FragmentHomeBinding.bind(view)
 
         val adapter = PetAdapters {
-            petViewModel.updateCurrentPet(it)
+//            petViewModel.updateCurrentPet(it)
             binding.fragmentHome.findNavController()
                 .navigate(R.id.action_fragmentHome_to_fragmentDetailPet)
         }
@@ -50,7 +50,6 @@ class FragmentHome : Fragment() {
                 }
             }
         }
-
         return view
     }
 

@@ -11,7 +11,6 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import com.kotlin.example.mypet.PetViewModel
 import com.kotlin.example.mypet.R
-import com.kotlin.example.mypet.data.PetDatabase
 import com.kotlin.example.mypet.databinding.FragmentDetailPetBinding
 
 class FragmentDetailPet : Fragment() {
@@ -19,9 +18,9 @@ class FragmentDetailPet : Fragment() {
 
 //    Dùng sai: lateinit var petViewModel : PetViewModel
     private val petViewModel : PetViewModel by activityViewModels()
-    private var petDatabase : PetDatabase?= null
+//    private var petDatabase : PetDatabase?= null
     // để sử dụng Fragment..Args cần plugin 'androidx.navigation.safeargs.kotlin'
-    val args : FragmentDetailPetArgs by navArgs()
+    private val args : FragmentDetailPetArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +44,7 @@ class FragmentDetailPet : Fragment() {
         }
 
 //        val database= petDatabase?.petDao()
-        val pet = args.detailPet
-
+        val pet = petViewModel.currentPet
         binding.fb.setOnClickListener{
             Log.i(TAG,"fvb on click")
             println(pet)

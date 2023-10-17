@@ -18,13 +18,11 @@ class HomeFragment: Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val petViewModel: PetViewModel by activityViewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val view: View = inflater.inflate(R.layout.home_fragment, container, false)
         bottomNavigationView = view.findViewById(R.id.bottomNavigationView)
         val bottomNav = bottomNavigationView

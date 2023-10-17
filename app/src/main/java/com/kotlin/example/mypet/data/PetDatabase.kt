@@ -7,10 +7,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.kotlin.example.mypet.model.Pet
-import com.kotlin.example.mypet.ui.FragmentHome
 
-@Database(entities = [Pet::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class)
+
+@Database(entities = [Pet::class], version = 1)
+//@TypeConverters(Converters::class)
 abstract class PetDatabase: RoomDatabase() {
     abstract fun getPetDao(): PetDao
 
@@ -18,11 +18,13 @@ abstract class PetDatabase: RoomDatabase() {
         @Volatile
         private var instance: PetDatabase? = null
         private val LOCK = Any()
-        operator fun invoke(context: Context) = instance?: synchronized(LOCK){
-            instance ?: createDatabase(context).also{
+        operator fun invoke(context: Context) =
+            instance?: synchronized(LOCK){
+            instance?: createDatabase(context).also{
                 instance = it}
         }
-        private fun createDatabase(context: Context) = Room.databaseBuilder(
+        private fun createDatabase(context: Context) =
+            Room.databaseBuilder(
             context.applicationContext,
             PetDatabase::class.java,
             "pet_db"

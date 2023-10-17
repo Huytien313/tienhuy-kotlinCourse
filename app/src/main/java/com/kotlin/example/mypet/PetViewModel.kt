@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 
 class PetViewModel: ViewModel() {
     val petRepository: PetRepository ?=null
+
     private var _currentPet : MutableLiveData<Pet> = MutableLiveData<Pet>()
     val currentPet : LiveData<Pet> get() = _currentPet
 
@@ -24,14 +25,19 @@ class PetViewModel: ViewModel() {
     fun updateCurrentPet(pet: Pet){
         _currentPet.value = pet
     }
-    fun savePet(pet: Pet) = viewModelScope.launch {
-        petRepository?.upsert(pet)
+    fun savePet(pet: LiveData<Pet>) = viewModelScope.launch {
+        petRepository?.insert(pet)
     }
     fun getSavedPet() = petRepository?.getSavedPet()
 
     fun deletePet(pet: Pet) = viewModelScope.launch {
         petRepository?.deletePet(pet)
     }
-
-
 }
+//class PetViewModelProviderFactory(
+//    val petRepository: PetRepository
+//) : ViewModelProvider.Factory {
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        return PetViewModel(petRepository) as T
+//    }
+//}

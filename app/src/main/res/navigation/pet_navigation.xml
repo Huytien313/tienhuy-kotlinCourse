@@ -29,8 +29,8 @@
     <fragment
         android:id="@+id/fragmentDetailPet"
         android:name="com.kotlin.example.mypet.ui.FragmentDetailPet"
-        android:label="fragment_detail_pet"
-        tools:layout="@layout/fragment_detail_pet">
+        android:label="fragment_detail_pet">
+<!--        tools:layout="@layout/fragment_detail_pet">-->
         <argument
             android:name="detailPet"
             app:argType="com.kotlin.example.mypet.model.Pet"/>
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentFavorite"
-        android:name=".ui.FragmentFavorite"
+        android:name="com.kotlin.example.mypet.ui.FragmentFavorite"
         android:label="FragmentFavorite" >
         <action
             android:id="@+id/action_fragmentFavorite_to_fragmentDetailPet"
