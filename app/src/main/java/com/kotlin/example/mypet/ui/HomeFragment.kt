@@ -11,6 +11,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kotlin.example.mypet.PetViewModel
 import com.kotlin.example.mypet.R
 import com.kotlin.example.mypet.databinding.HomeFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class HomeFragment: Fragment() {
 
@@ -29,6 +31,7 @@ class HomeFragment: Fragment() {
         bottomNav.setOnNavigationItemSelectedListener(navListener)
         childFragmentManager.beginTransaction().replace(R.id.framelayout,FragmentHome()).commit()
         return view
+
     }
         private val navListener = BottomNavigationView.OnNavigationItemSelectedListener {
 

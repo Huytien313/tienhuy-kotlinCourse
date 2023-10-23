@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(tableName = "pets")
-
 data class Pet (
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     val name: Int,
     val yearOld : Int,

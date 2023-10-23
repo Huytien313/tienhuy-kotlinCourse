@@ -18,7 +18,7 @@ class PetAdapters(private val onItemClicked: (Pet) -> Unit) :
 ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
 
     private lateinit var context : Context
-    val differ = AsyncListDiffer(this, DiffCallback)
+//    val differ = AsyncListDiffer(this, DiffCallback)
 
     class PetViewHolder(private var binding : GridItemViewBinding):
     RecyclerView.ViewHolder(binding.root){
@@ -70,6 +70,12 @@ ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
             onItemClicked(currentPet)
         }
 
+    }
+    private val items =  ArrayList<Pet>()
+    fun setPet(items: ArrayList<Pet>) {
+        this.items.clear()
+        this.items.addAll(items)
+        notifyDataSetChanged()
     }
 }
 

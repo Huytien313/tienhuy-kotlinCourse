@@ -6,13 +6,13 @@ import androidx.room.*
 import com.kotlin.example.mypet.model.Pet
 
 @Dao
-interface   PetDao {
+interface PetDao {
 
     @Insert( onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPet(pet: LiveData<Pet>)
+    suspend fun insertPet(pet: Pet)
 
-    @Query("SELECT * FROM pets ")   // articles = tableName in data
-    fun getPets(): LiveData<List<Pet>>
+    @Query("SELECT * FROM pets ")   // pets = tableName in data
+    fun getPets() : LiveData<List<Pet>>
 
     @Delete
     suspend fun deletePet(pet: Pet)

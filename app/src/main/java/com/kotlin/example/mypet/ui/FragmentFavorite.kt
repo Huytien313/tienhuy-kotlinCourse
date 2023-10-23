@@ -1,29 +1,29 @@
 package com.kotlin.example.mypet.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.Observer
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.example.mypet.Adapters.PetAdapters
 import com.kotlin.example.mypet.PetViewModel
 import com.kotlin.example.mypet.R
 import com.kotlin.example.mypet.databinding.FragmentFavoriteBinding
-import com.kotlin.example.mypet.model.Pet
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * A simple [Fragment] subclass.
  * Use the [FragmentFavorite.newInstance] factory method to
  * create an instance of this fragment.
  */
+
 class FragmentFavorite : Fragment() {
     private val TAG ="FragmentFavorite"
-    private val petViewModel : PetViewModel by activityViewModels()
+    private val petViewModel : PetViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,10 +38,10 @@ class FragmentFavorite : Fragment() {
         val adapter = PetAdapters{}
         binding.favoritePets.adapter = adapter
         binding.favoritePets.layoutManager = LinearLayoutManager(activity)
-//        adapter.submitList(petViewModel.petData.filter { pet: Pet -> pet.category == 1 })
-        petViewModel.getSavedPet()?.observe(
-            viewLifecycleOwner, Observer { pets ->
-                adapter.differ.submitList(pets)
+
+        petViewModel.getSavedPet().observe(
+            viewLifecycleOwner,Observer { pet ->
+                adapter.submitList(pet)
             })
     }
 }

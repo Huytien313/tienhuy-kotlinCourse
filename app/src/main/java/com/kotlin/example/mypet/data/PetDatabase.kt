@@ -9,7 +9,7 @@ import androidx.room.TypeConverters
 import com.kotlin.example.mypet.model.Pet
 
 
-@Database(entities = [Pet::class], version = 1)
+@Database(entities = [Pet::class], version = 1, exportSchema = false)
 //@TypeConverters(Converters::class)
 abstract class PetDatabase: RoomDatabase() {
     abstract fun getPetDao(): PetDao
@@ -17,17 +17,18 @@ abstract class PetDatabase: RoomDatabase() {
     companion object {
         @Volatile
         private var instance: PetDatabase? = null
-        private val LOCK = Any()
-        operator fun invoke(context: Context) =
-            instance?: synchronized(LOCK){
+//        private val LOCK = Any()
+        operator fun invoke(context: Context) : PetDatabase  =
+            instance?: synchronized(this){
             instance?: createDatabase(context).also{
-                instance = it}
+                instance = it
+            }
         }
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
             context.applicationContext,
             PetDatabase::class.java,
             "pet_db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 }

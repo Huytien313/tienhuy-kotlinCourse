@@ -7,17 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.kotlin.example.mypet.PetViewModel
 import com.kotlin.example.mypet.R
 import com.kotlin.example.mypet.databinding.FragmentDetailPetBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+//@AndroidEntryPoint
 class FragmentDetailPet : Fragment() {
     val TAG = "FramentDetailPet"
 
 //    Dùng sai: lateinit var petViewModel : PetViewModel
-    private val petViewModel : PetViewModel by activityViewModels()
+    private val petViewModel : PetViewModel by viewModels()
 //    private var petDatabase : PetDatabase?= null
     // để sử dụng Fragment..Args cần plugin 'androidx.navigation.safeargs.kotlin'
     private val args : FragmentDetailPetArgs by navArgs()
@@ -43,14 +46,11 @@ class FragmentDetailPet : Fragment() {
             binding.petImageDetail.load(it.petImage)
         }
 
-//        val database= petDatabase?.petDao()
-        val pet = petViewModel.currentPet
+        val pet = args.detailPet
         binding.fb.setOnClickListener{
             Log.i(TAG,"fvb on click")
             println(pet)
-            petViewModel.savePet(pet)
-//            pet.let { it1 -> petViewModel.savePet(it1) }
-//            database?.insertPet(pet)
+//            petViewModel.savePet(pet)
         }
     }
 }
