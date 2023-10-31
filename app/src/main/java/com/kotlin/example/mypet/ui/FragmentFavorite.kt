@@ -23,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 class FragmentFavorite : Fragment() {
     private val TAG ="FragmentFavorite"
-    private val petViewModel : PetViewModel by viewModels()
+    private val petViewModel : PetViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +39,7 @@ class FragmentFavorite : Fragment() {
         binding.favoritePets.adapter = adapter
         binding.favoritePets.layoutManager = LinearLayoutManager(activity)
 
-        petViewModel.getSavedPet().observe(
+        petViewModel.getSavedPet()?.observe(
             viewLifecycleOwner,Observer { pet ->
                 adapter.submitList(pet)
             })

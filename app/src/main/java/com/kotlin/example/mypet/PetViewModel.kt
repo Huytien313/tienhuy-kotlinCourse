@@ -18,10 +18,10 @@ import com.kotlin.example.mypet.repository.PetRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class PetViewModel @ViewModelInject constructor(
-    private val petRepository: PetRepository
+class PetViewModel (
+    val petRepository : PetRepository
 ): ViewModel() {
-    //    val petRepository: PetRepository ?=null
+//        val petRepository: PetRepository ?=null
     private var _pet : MutableLiveData<Pet> = MutableLiveData<Pet>()
     val pet : LiveData<Pet> get() = _pet
 
@@ -37,19 +37,19 @@ class PetViewModel @ViewModelInject constructor(
         _currentPet.value = _petData[0]
     }
     fun savePet(pet: Pet) = viewModelScope.launch {
-        petRepository.insert(pet)
+        petRepository?.insert(pet)
     }
-    fun getSavedPet() = petRepository.getSavedPet()
+    fun getSavedPet() = petRepository?.getSavedPet()
 
     fun deletePet(pet: Pet) = viewModelScope.launch {
-        petRepository.deletePet(pet)
+        petRepository?.deletePet(pet)
     }
 }
-class PetViewModelProviderFactory(
-    val petRepository: PetRepository
-) : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return PetViewModel(petRepository) as T
-    }
-}
+//class PetViewModelProviderFactory(
+//    val petRepository: PetRepository
+//) : ViewModelProvider.Factory {
+//
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        return PetViewModel(petRepository) as T
+//    }
+//}

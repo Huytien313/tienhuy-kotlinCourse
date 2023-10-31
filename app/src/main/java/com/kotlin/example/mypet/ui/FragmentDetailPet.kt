@@ -20,7 +20,7 @@ class FragmentDetailPet : Fragment() {
     val TAG = "FramentDetailPet"
 
 //    Dùng sai: lateinit var petViewModel : PetViewModel
-    private val petViewModel : PetViewModel by viewModels()
+    private val petViewModel : PetViewModel by activityViewModels()
 //    private var petDatabase : PetDatabase?= null
     // để sử dụng Fragment..Args cần plugin 'androidx.navigation.safeargs.kotlin'
     private val args : FragmentDetailPetArgs by navArgs()
@@ -50,7 +50,7 @@ class FragmentDetailPet : Fragment() {
         binding.fb.setOnClickListener{
             Log.i(TAG,"fvb on click")
             println(pet)
-//            petViewModel.savePet(pet)
+            petViewModel.savePet(pet)
         }
     }
 }

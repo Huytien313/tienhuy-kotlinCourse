@@ -72,10 +72,10 @@ ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
 
     }
     private val items =  ArrayList<Pet>()
-    fun setPet(items: ArrayList<Pet>) {
-        this.items.clear()
-        this.items.addAll(items)
-        notifyDataSetChanged()
-    }
+//    fun setPet(items: ArrayList<Pet>) {
+//        this.items.clear()
+//        this.items.addAll(items)
+//        notifyDataSetChanged()
+//    }
 }
 

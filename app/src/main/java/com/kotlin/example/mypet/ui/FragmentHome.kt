@@ -24,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 
 class FragmentHome : Fragment() {
-    private val petViewModel: PetViewModel by viewModels()
+    private val petViewModel: PetViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

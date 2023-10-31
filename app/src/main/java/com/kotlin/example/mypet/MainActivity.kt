@@ -11,11 +11,15 @@ import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var petViewModel : PetViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 //        setContentView(binding.root)
         setContentView(R.layout.activity_main)
 
+        val petRepository = PetRepository(PetDatabase(this))
+        val viewModelProviderFactory = PetsViewModelProviderFactory(petRepository)
+        petViewModel = ViewModelProvider(this, viewModelProviderFactory).get(PetViewModel::class.java)
     }
 }
