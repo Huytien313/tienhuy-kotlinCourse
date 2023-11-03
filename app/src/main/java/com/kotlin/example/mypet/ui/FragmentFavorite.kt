@@ -39,7 +39,7 @@ class FragmentFavorite : Fragment() {
         binding.favoritePets.adapter = adapter
         binding.favoritePets.layoutManager = LinearLayoutManager(activity)
 
-        petViewModel.getSavedPet()?.observe(
+        petViewModel.getSavedPet().observe(
             viewLifecycleOwner,Observer { pet ->
                 adapter.submitList(pet)
             })

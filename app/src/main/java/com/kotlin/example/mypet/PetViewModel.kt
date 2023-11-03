@@ -37,12 +37,12 @@ class PetViewModel (
         _currentPet.value = _petData[0]
     }
     fun savePet(pet: Pet) = viewModelScope.launch {
-        petRepository?.insert(pet)
+        petRepository.insert(pet)
     }
-    fun getSavedPet() = petRepository?.getSavedPet()
+    fun getSavedPet() = petRepository.getSavedPet()
 
     fun deletePet(pet: Pet) = viewModelScope.launch {
-        petRepository?.deletePet(pet)
+        petRepository.deletePet(pet)
     }
 }
 //class PetViewModelProviderFactory(

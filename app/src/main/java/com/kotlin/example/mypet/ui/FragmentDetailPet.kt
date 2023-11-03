@@ -47,10 +47,13 @@ class FragmentDetailPet : Fragment() {
         }
 
         val pet = args.detailPet
-        binding.fb.setOnClickListener{
-            Log.i(TAG,"fvb on click")
-            println(pet)
-            petViewModel.savePet(pet)
+        binding.chb.setOnClickListener {
+
+            if (binding.chb.isChecked) {
+                petViewModel.savePet(pet)
+            } else {
+                petViewModel.deletePet(pet)
+            }
         }
     }
 }

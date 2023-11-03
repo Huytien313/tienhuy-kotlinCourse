@@ -38,16 +38,22 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/ic_allpet" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_favorite"
-            android:backgroundTint="@color/white"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+<!--        <CheckBox-->
+<!--            android:id="@+id/chb"-->
+<!--            android:layout_width="122dp"-->
+<!--            android:layout_height="114dp"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:background="@drawable/shape_ring"-->
+<!--            android:button="@drawable/selector_favorites"-->
+<!--            android:checked="false"-->
+<!--            android:scaleX="0.9"-->
+<!--            android:scaleY="0.9"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <Button
             android:id="@+id/sound"
@@ -146,6 +152,25 @@
             android:text="Sign up for an acquaintance"
             android:textSize="15dp"
             android:backgroundTint="#FB6C69"/>
+
+        <CheckBox
+            android:id="@+id/chb"
+            android:layout_width="79dp"
+            android:layout_height="76dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/shape_ring"
+            android:button="@drawable/selector_favorites"
+            android:checked="false"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
