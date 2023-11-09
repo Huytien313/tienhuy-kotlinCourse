@@ -30,13 +30,17 @@ class FragmentDetailPet : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_pet, container, false)
+        // return inflater.inflate(R.layout.fragment_detail_pet, container, false) ==
+        return FragmentDetailPetBinding.inflate(inflater, container,false).root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentDetailPetBinding.bind(view)
 
+        val pet = args.detailPet
+
+        println("fragmendetail petcurrent: "+ petViewModel.currentPet )
         petViewModel.currentPet.observe(this.viewLifecycleOwner){
             binding.petBreedDetail.text = getString(it.breed)
             binding.petOldDetail.text = getString(it.yearOld)
@@ -45,14 +49,10 @@ class FragmentDetailPet : Fragment() {
             binding.petDetail.text = getString(it.description)
             binding.petImageDetail.load(it.petImage)
         }
-
-        val pet = args.detailPet
         binding.chb.setOnClickListener {
-
             if (binding.chb.isChecked) {
                 petViewModel.savePet(pet)
             } else {
-                petViewModel.deletePet(pet)
             }
         }
     }

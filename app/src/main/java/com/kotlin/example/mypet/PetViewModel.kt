@@ -21,7 +21,6 @@ import javax.inject.Inject
 class PetViewModel (
     val petRepository : PetRepository
 ): ViewModel() {
-//        val petRepository: PetRepository ?=null
     private var _pet : MutableLiveData<Pet> = MutableLiveData<Pet>()
     val pet : LiveData<Pet> get() = _pet
 
@@ -33,7 +32,7 @@ class PetViewModel (
 
     init {
         _petData = PetData.getPetData()
-        // không có dòng này ko load đc ảnh lên detailPet
+        // không có dòng này ko load đc thông tin lên detailPet
         _currentPet.value = _petData[0]
     }
     fun savePet(pet: Pet) = viewModelScope.launch {
@@ -44,12 +43,10 @@ class PetViewModel (
     fun deletePet(pet: Pet) = viewModelScope.launch {
         petRepository.deletePet(pet)
     }
+
+    // không có hàm này thì detailPet không update pet tương ứng mà
+    // chỉ hiển thị pet[0]. kết hợp khai báo trong adapter của FragmentHome
+    fun updateCurrentPet(pet: Pet) {
+        _currentPet.value = pet
+    }
 }
-//class PetViewModelProviderFactory(
-//    val petRepository: PetRepository
-//) : ViewModelProvider.Factory {
-//
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        return PetViewModel(petRepository) as T
-//    }
-//}

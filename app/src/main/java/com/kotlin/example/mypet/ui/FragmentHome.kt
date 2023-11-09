@@ -34,6 +34,8 @@ class FragmentHome : Fragment() {
         val binding = FragmentHomeBinding.bind(view)
 
         val adapter = PetAdapters {
+            // update pet tương ướng khi hiển thị trên PetDetail
+            petViewModel.updateCurrentPet(it)
             binding.fragmentHome.findNavController()
                 .navigate(R.id.action_fragmentHome_to_fragmentDetailPet,
                     bundleOf("detailPet" to it) )

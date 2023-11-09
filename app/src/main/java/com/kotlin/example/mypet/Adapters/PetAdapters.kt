@@ -30,7 +30,29 @@ ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
             binding.PetImage.load(pet.petImage)
         }
     }
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int): PetViewHolder {
+//        không có dòng này không inflate được sang HomeFragment
+        context = parent.context
+        return PetViewHolder(
+            GridItemViewBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
+    }
+    override fun onBindViewHolder(
+        holder: PetViewHolder, position: Int) {
+        val currentPet = getItem(position)
 
+        // không có dòng này list pet không hiện đúng với từng pet
+        holder.bind(currentPet, context)
+        holder.itemView.setOnClickListener {
+            onItemClicked(currentPet)
+
+            println("currentPet: " + currentPet)
+        }
+    }
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<Pet>() {
             override fun areItemsTheSame(oldItem: Pet, newItem: Pet): Boolean {
@@ -47,35 +69,8 @@ ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int): PetViewHolder {
-//        không có dòng này không inflate được sang HomeFragment
-        context = parent.context
-        return PetViewHolder(
-            GridItemViewBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false
-            )
-        )
-    }
 
-    override fun onBindViewHolder(
-        holder: PetViewHolder, position: Int) {
-        val currentPet = getItem(position)
 
-        // không có dòng này list pet không hiện đúng với từng pet
-        holder.bind(currentPet, context)
 
-        holder.itemView.setOnClickListener {
-            onItemClicked(currentPet)
-        }
-
-    }
-    private val items =  ArrayList<Pet>()
-//    fun setPet(items: ArrayList<Pet>) {
-//        this.items.clear()
-//        this.items.addAll(items)
-//        notifyDataSetChanged()
-//    }
 }
 
