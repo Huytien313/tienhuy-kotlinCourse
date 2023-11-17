@@ -43,7 +43,6 @@ class PetViewModel (
     fun deletePet(pet: Pet) = viewModelScope.launch {
         petRepository.deletePet(pet)
     }
-
     // không có hàm này thì detailPet không update pet tương ứng mà
     // chỉ hiển thị pet[0]. kết hợp khai báo trong adapter của FragmentHome
     fun updateCurrentPet(pet: Pet) {

@@ -14,6 +14,7 @@
             android:id="@+id/action_fragmentStart_to_fragmentHome"
             app:destination="@id/fragmentHome" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentHome"
         android:name="com.kotlin.example.mypet.ui.HomeFragment"
@@ -24,27 +25,24 @@
             app:destination="@id/fragmentDetailPet" />
     </fragment>
 
-
+    <fragment
+        android:id="@+id/fragmentFavorite"
+        android:name="com.kotlin.example.mypet.ui.FragmentFavorite"
+        android:label="FragmentFavorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_fragmentFavorite_to_fragmentDetailPet"
+            app:destination="@id/fragmentDetailPet" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentDetailPet"
         android:name="com.kotlin.example.mypet.ui.FragmentDetailPet"
         android:label="fragment_detail_pet">
-<!--        tools:layout="@layout/fragment_detail_pet">-->
         <argument
             android:name="detailPet"
             app:argType="com.kotlin.example.mypet.model.Pet"/>
-<!--            app:nullable="true"-->
-<!--            android:defaultValue="@null"-->
 
-    </fragment>
-    <fragment
-        android:id="@+id/fragmentFavorite"
-        android:name="com.kotlin.example.mypet.ui.FragmentFavorite"
-        android:label="FragmentFavorite" >
-        <action
-            android:id="@+id/action_fragmentFavorite_to_fragmentDetailPet"
-            app:destination="@id/fragmentDetailPet" />
     </fragment>
 
 </navigation>

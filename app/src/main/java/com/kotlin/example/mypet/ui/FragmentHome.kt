@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.example.mypet.Adapters.PetAdapters
 import com.kotlin.example.mypet.PetViewModel
@@ -36,7 +37,8 @@ class FragmentHome : Fragment() {
         val adapter = PetAdapters {
             // update pet tương ướng khi hiển thị trên PetDetail
             petViewModel.updateCurrentPet(it)
-            binding.fragmentHome.findNavController()
+            // điều hướng tới detailPet
+            findNavController()
                 .navigate(R.id.action_fragmentHome_to_fragmentDetailPet,
                     bundleOf("detailPet" to it) )
         }
@@ -45,7 +47,6 @@ class FragmentHome : Fragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(this.context, 2)
         adapter.submitList(petViewModel.petData)
         binding.groupToggle.check(R.id.button_pet)
-
 
         binding.groupToggle.addOnButtonCheckedListener { groupToggle, checkedId, isChecked ->
             if (isChecked) {

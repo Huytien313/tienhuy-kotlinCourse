@@ -76,6 +76,9 @@
     <string name="descriptionDetail">The kindnest pet we have ever met.
         likes to play with ball, is friends with other animal.
         He got the white color, love rain and pubbles.</string>
+    <string name="pet_name">Pet Name</string>
+    <string name="pet_breed">Pet Breed</string>
+    <string name="pet_year_old">Pet year old</string>
 
 
 </resources>

@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.Observer
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.example.mypet.Adapters.PetAdapters
 import com.kotlin.example.mypet.PetViewModel
@@ -22,7 +26,6 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 
 class FragmentFavorite : Fragment() {
-    private val TAG ="FragmentFavorite"
     private val petViewModel : PetViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +38,18 @@ class FragmentFavorite : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentFavoriteBinding.bind(view)
 
-        val adapter = PetAdapters{}
-        binding.favoritePets.adapter = adapter
-        binding.favoritePets.layoutManager = LinearLayoutManager(activity)
+        val adapters = PetAdapters {
+            findNavController()
+            .navigate(R.id.action_fragmentFavorite_to_fragmentDetailPet,
+                bundleOf("detailPet" to it))
+        }
 
+        binding.favoritePets.adapter = adapters
+        binding.favoritePets.layoutManager = LinearLayoutManager(activity)
         petViewModel.getSavedPet().observe(
             viewLifecycleOwner,Observer { pet ->
-                adapter.submitList(pet)
+                adapters.submitList(pet)
             })
+
     }
 }

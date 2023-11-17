@@ -13,6 +13,9 @@ import coil.load
 import com.kotlin.example.mypet.model.Pet
 import com.kotlin.example.mypet.ui.FragmentDetailPet
 import com.kotlin.example.mypet.ui.FragmentHome
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class PetAdapters(private val onItemClicked: (Pet) -> Unit) :
 ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
@@ -20,7 +23,7 @@ ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
     private lateinit var context : Context
 //    val differ = AsyncListDiffer(this, DiffCallback)
 
-    class PetViewHolder(private var binding : GridItemViewBinding):
+    class PetViewHolder(var binding : GridItemViewBinding):
     RecyclerView.ViewHolder(binding.root){
 
         fun bind(pet : Pet, context: Context){
@@ -47,9 +50,9 @@ ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
 
         // không có dòng này list pet không hiện đúng với từng pet
         holder.bind(currentPet, context)
+
         holder.itemView.setOnClickListener {
             onItemClicked(currentPet)
-
             println("currentPet: " + currentPet)
         }
     }
@@ -62,15 +65,18 @@ ListAdapter<Pet, PetAdapters.PetViewHolder>(DiffCallback){
                         oldItem.yearOld == newItem.yearOld
                         )
             }
-
             override fun areContentsTheSame(oldItem: Pet, newItem: Pet): Boolean {
                 return oldItem == newItem
             }
         }
     }
 
-
-
-
+//    các favorite checkbox đều được check
+//    override fun onViewAttachedToWindow(holder: PetViewHolder) {
+//        super.onViewAttachedToWindow(holder)
+//        CoroutineScope(Dispatchers.IO).launch {
+//            holder.binding.chb.isChecked = true
+//        }
+//    }
 }
 

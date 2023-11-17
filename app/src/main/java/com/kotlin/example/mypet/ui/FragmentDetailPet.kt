@@ -1,5 +1,6 @@
 package com.kotlin.example.mypet.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -39,20 +40,25 @@ class FragmentDetailPet : Fragment() {
         val binding = FragmentDetailPetBinding.bind(view)
 
         val pet = args.detailPet
+        println("fragmendetail petcurrent: " + petViewModel.currentPet )
 
-        println("fragmendetail petcurrent: "+ petViewModel.currentPet )
         petViewModel.currentPet.observe(this.viewLifecycleOwner){
             binding.petBreedDetail.text = getString(it.breed)
             binding.petOldDetail.text = getString(it.yearOld)
             binding.petTypicals.text = getString(it.typical)
-            binding.petWeight.text = getString(it.typical)
+            binding.petWeight.text = getString(it.weight)
             binding.petDetail.text = getString(it.description)
             binding.petImageDetail.load(it.petImage)
         }
+
         binding.chb.setOnClickListener {
             if (binding.chb.isChecked) {
                 petViewModel.savePet(pet)
-            } else {
+                // make background button is red
+                binding.chb.setBackgroundColor(Color.RED)
+                }
+            else {
+                petViewModel.deletePet(pet)
             }
         }
     }
